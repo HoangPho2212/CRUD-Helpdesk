@@ -64,6 +64,18 @@ describe('Helpdesk API', () => {
         expect(res.body.issueCode).toEqual('IT-001');
     });
 
+    it('should get a random response', async () => {
+        const res = await request(app).get('/responses/random');
+        expect(res.statusCode).toEqual(200);
+        expect(res.body).toHaveProperty('issueCode');
+    });
+
+    it('should get count of responses', async () => {
+        const res = await request(app).get('/responses/count');
+        expect(res.statusCode).toEqual(200);
+        expect(res.body.count).toBeGreaterThan(0);
+    });
+
     it('should update a response', async () => {
         const res = await request(app)
             .put(`/responses/${createdId}`)

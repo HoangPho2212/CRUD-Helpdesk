@@ -70,3 +70,28 @@ exports.delete_a_response = async (req, res) => {
         res.status(500).send(err);
     }
 };
+
+// Get a random response for the quiz
+exports.get_random_response = async (req, res) => {
+    try {
+        const count = await Helpdesk.countDocuments();
+        if (count === 0) {
+            return res.status(404).json({ message: 'No responses available' });
+        }
+        const random = Math.floor(Math.random() * count);
+        const response = await Helpdesk.findOne().skip(random);
+        res.json(response);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
+
+// Get total count of responses
+exports.get_count = async (req, res) => {
+    try {
+        const count = await Helpdesk.countDocuments();
+        res.json({ count });
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
