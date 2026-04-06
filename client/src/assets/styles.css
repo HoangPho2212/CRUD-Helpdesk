@@ -26,6 +26,10 @@
 }
 
 /* Global Reset */
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     margin: 0;
@@ -54,6 +58,7 @@ h1, h2, h3 {
     color: var(--text-main);
     font-weight: 700;
     margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 /* Navbar */
@@ -119,6 +124,7 @@ h1, h2, h3 {
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border-color);
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 /* Tables */
@@ -235,9 +241,15 @@ td button:last-child {
 }
 
 /* Form Styling */
+.add-response form, .edit-response form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
 .add-response form > div,
 .edit-response form > div {
     margin-bottom: 1.2rem;
+    text-align: left;
 }
 
 label {
@@ -271,6 +283,11 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* Quiz View Specifics */
+.quiz-view .quiz-card {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
 .quiz-view .issue-box {
     background: var(--primary-light);
     border-left: 4px solid var(--primary-color);
@@ -278,10 +295,18 @@ input:focus, textarea:focus, select:focus {
     border-radius: var(--radius-md);
     font-size: 1.1rem;
     margin-bottom: 2rem;
+    text-align: center;
 }
 
 .quiz-view .issue-box strong {
     color: var(--primary-dark);
+}
+
+.options-list {
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .option-item {
@@ -314,8 +339,10 @@ input:focus, textarea:focus, select:focus {
 
 .feedback {
     margin-top: 2rem;
+    padding: 1rem;
     font-weight: 600;
     border-radius: var(--radius-md);
+    text-align: center;
 }
 
 .feedback.correct {
@@ -330,6 +357,11 @@ input:focus, textarea:focus, select:focus {
     color: var(--danger-color);
 }
 
+.quiz-view .actions {
+    margin-top: 15px;
+    text-align: center;
+}
+
 /* System Info View Specifics */
 .info-grid {
     display: grid;
@@ -342,6 +374,7 @@ input:focus, textarea:focus, select:focus {
     color: var(--primary-dark);
     border-bottom: 2px solid var(--primary-light);
     padding-bottom: 0.5rem;
+    text-align: left;
 }
 
 .info-card ul {
@@ -363,11 +396,22 @@ input:focus, textarea:focus, select:focus {
     font-size: 0.85rem;
 }
 
+/* Management View Layout */
+.management-view {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.management-view .form-section {
+    width: 100%;
+}
+
 /* Responsive Grid for Management */
-@media (min-width: 992px) {
+@media (min-width: 1200px) {
     .management-view {
         display: grid;
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: 400px 1fr;
         gap: 2rem;
         align-items: start;
     }
