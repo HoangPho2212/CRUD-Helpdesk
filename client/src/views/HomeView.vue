@@ -4,6 +4,6 @@ import ResponseList from '../components/ResponseList.vue';
 
 <template>
   <div class="home-view">
-    <ResponseList />
+    <ResponseList :show-actions="false" />
   </div>
 </template>

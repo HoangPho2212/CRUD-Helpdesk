@@ -4,6 +4,9 @@ import { helpdeskApi } from '../services/api';
 import type { HelpdeskContract } from '../types';
 
 const emit = defineEmits(['edit-response']);
+const props = defineProps({
+  showActions: { type: Boolean, default: false }
+});
 const responses = ref<HelpdeskContract[]>([]);
 const searchQuery = ref('');
 const isLoading = ref(false);
@@ -66,7 +69,7 @@ defineExpose({ fetchResponses });
           <th>Issue Code</th>
           <th>Response</th>
           <th>Category</th>
-          <th>Actions</th>
+          <th v-if="showActions">Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -74,7 +77,7 @@ defineExpose({ fetchResponses });
           <td>{{ item.issueCode }}</td>
           <td>{{ item.response }}</td>
           <td>{{ item.category }}</td>
-          <td>
+          <td v-if="showActions">
             <button @click="$emit('edit-response', item)">Edit</button>
             <button @click="deleteResponse(item._id!)">Delete</button>
           </td>

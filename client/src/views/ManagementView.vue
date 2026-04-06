@@ -35,7 +35,7 @@ const cancelEdit = () => {
     </div>
     
     <div class="list-section">
-      <ResponseList ref="listRef" @edit-response="onEditResponse" />
+      <ResponseList ref="listRef" :show-actions="true" @edit-response="onEditResponse" />
     </div>
   </div>
 </template>
