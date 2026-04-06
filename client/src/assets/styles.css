@@ -219,6 +219,10 @@ button[type="button"]:hover {
 }
 
 /* Action Buttons in Table */
+td:last-child {
+    white-space: nowrap;
+}
+
 td button {
     padding: 6px 12px;
     font-size: 0.8rem;
