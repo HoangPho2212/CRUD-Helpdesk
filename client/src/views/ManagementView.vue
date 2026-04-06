@@ -39,8 +39,3 @@ const cancelEdit = () => {
     </div>
   </div>
 </template>
-
-<style scoped>
-.management-view { display: flex; flex-direction: column; gap: 20px; }
-.form-section { padding: 15px; border: 1px solid #ddd; border-radius: 4px; background: #fafafa; }
-</style>

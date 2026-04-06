@@ -47,11 +47,3 @@ onMounted(async () => {
     </div>
   </div>
 </template>
-
-<style scoped>
-.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px; }
-.info-card { border: 1px solid #eee; padding: 20px; border-radius: 8px; background: #fafafa; }
-h3 { margin-top: 0; color: #444; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
-ul { padding-left: 20px; }
-li { margin-bottom: 5px; }
-</style>

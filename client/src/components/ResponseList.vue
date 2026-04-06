@@ -86,12 +86,3 @@ defineExpose({ fetchResponses });
     </table>
   </div>
 </template>
-
-<style scoped>
-.error { color: red; }
-.search-bar { margin-bottom: 1rem; }
-.search-bar input { width: 100%; padding: 8px; box-sizing: border-box; }
-.no-results { padding: 20px; text-align: center; color: #666; font-style: italic; }
-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-th, td { padding: 0.5rem; text-align: left; }
-</style>

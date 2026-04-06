@@ -105,26 +105,3 @@ onMounted(loadNextQuestion);
     </div>
   </div>
 </template>
-
-<style scoped>
-.quiz-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-.issue-box { font-size: 1.2rem; margin-bottom: 20px; padding: 10px; background: #eef; border-radius: 4px; }
-.answer-section { margin-bottom: 20px; }
-
-.options-list { margin: 15px 0; display: flex; flex-direction: column; gap: 10px; }
-.option-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px; border: 1px solid #eee; border-radius: 4px; cursor: pointer; transition: background 0.2s; }
-.option-item:hover { background: #f9f9f9; }
-.option-item input { margin-top: 3px; }
-.option-item label { flex: 1; cursor: pointer; }
-
-.option-item.correct-highlight {
-  border-color: #28a745 !important;
-  background-color: #e6ffed !important;
-  font-weight: bold;
-}
-
-.feedback { padding: 15px; border-radius: 4px; margin-top: 15px; }
-.feedback.correct { background: #e6ffed; border: 1px solid #b7eb8f; color: #1e4620; }
-.feedback.incorrect { background: #fff1f0; border: 1px solid #ffa39e; color: #5c0011; }
-.actions { margin-top: 15px; }
-</style>

@@ -59,10 +59,3 @@ const submitForm = async () => {
     </form>
   </div>
 </template>
-
-<style scoped>
-form > div { margin-bottom: 0.5rem; }
-label { display: block; }
-input, textarea, select { width: 100%; box-sizing: border-box; }
-.error { color: red; font-size: 0.8rem; margin: 4px 0; }
-</style>

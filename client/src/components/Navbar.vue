@@ -9,25 +9,3 @@
     </div>
   </nav>
 </template>
-
-<style scoped>
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #333;
-  color: white;
-  padding: 1rem 2rem;
-  margin-bottom: 20px;
-  border-radius: 4px;
-}
-.nav-brand { font-size: 1.5rem; font-weight: bold; }
-.nav-links { display: flex; gap: 20px; }
-.nav-links a {
-  color: #ccc;
-  text-decoration: none;
-  font-weight: bold;
-}
-.nav-links a.router-link-active { color: white; border-bottom: 2px solid white; }
-.nav-links a:hover { color: white; }
-</style>
