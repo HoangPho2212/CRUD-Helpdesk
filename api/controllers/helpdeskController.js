@@ -3,11 +3,12 @@ const mongoose = require('mongoose');
 const Helpdesk = mongoose.model('Helpdesk');
 
 /**
- * Controller for Helpdesk responses.
- * Implements standard CRUD operations.
+ * helpdeskController.js - Business Logic
+ * This file contains the "Brains" of the API. It handles how data is 
+ * retrieved from or saved to the MongoDB database.
  */
 
-// List all responses
+// 1. List All: Fetches every record in the 'responses' collection
 exports.list_all_responses = async (req, res) => {
     try {
         const responses = await Helpdesk.find({});
@@ -17,10 +18,10 @@ exports.list_all_responses = async (req, res) => {
     }
 };
 
-// Create a new response
+// 2. Create: Takes data from the frontend and saves a new response to the DB
 exports.create_a_response = async (req, res) => {
     try {
-        const new_response = new Helpdesk(req.body);
+        const new_response = new Helpdesk(req.body); //new instansce of model//
         const response = await new_response.save();
         res.status(201).json(response);
     } catch (err) {
@@ -28,7 +29,7 @@ exports.create_a_response = async (req, res) => {
     }
 };
 
-// Read a single response
+// 3. Read One: Finds a specific item using its unique Database ID (_id)
 exports.read_a_response = async (req, res) => {
     try {
         const response = await Helpdesk.findById(req.params.id);
@@ -41,13 +42,13 @@ exports.read_a_response = async (req, res) => {
     }
 };
 
-// Update a response
+// 4. Update: Finds an existing record and merges it with new data from the user
 exports.update_a_response = async (req, res) => {
     try {
         const response = await Helpdesk.findOneAndUpdate(
             { _id: req.params.id },
             req.body,
-            { new: true, runValidators: true }
+            { new: true, runValidators: true } // 'new' returns the updated data, 'runValidators' ensures regex is checked
         );
         if (!response) {
             return res.status(404).json({ message: 'Response not found' });
@@ -58,7 +59,7 @@ exports.update_a_response = async (req, res) => {
     }
 };
 
-// Delete a response
+// 5. Delete: Removes a record permanently from the database
 exports.delete_a_response = async (req, res) => {
     try {
         const response = await Helpdesk.deleteOne({ _id: req.params.id });
@@ -71,7 +72,8 @@ exports.delete_a_response = async (req, res) => {
     }
 };
 
-// Get a random response for the quiz
+// 6. Random (Quiz Feature): Counts all docs and picks 1 random one
+// This is used to generate the "Question" for our Training Quiz.
 exports.get_random_response = async (req, res) => {
     try {
         const count = await Helpdesk.countDocuments();
@@ -86,7 +88,8 @@ exports.get_random_response = async (req, res) => {
     }
 };
 
-// Get total count of responses
+// 7. Count (Stats Feature): Returns the total number of records
+// This powers the "Statistics" card on the System Info page.
 exports.get_count = async (req, res) => {
     try {
         const count = await Helpdesk.countDocuments();

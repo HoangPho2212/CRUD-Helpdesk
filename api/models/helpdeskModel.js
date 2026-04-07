@@ -21,7 +21,7 @@ const HelpdeskSchema = new Schema({
     },
     category: {
         type: String,
-        required: 'Please enter the category'
+        required: 'Please enter the category'   
     }
 }, {
     collection: 'responses',

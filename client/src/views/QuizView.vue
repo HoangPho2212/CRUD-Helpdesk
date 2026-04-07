@@ -1,20 +1,31 @@
 <script setup lang="ts">
+/**
+ * QuizView.vue - Staff Training Logic
+ * This is the most complex part of the frontend. It fetches a random 
+ * question and dynamically generates 3 unique distractors (wrong answers).
+ */
 import { ref, onMounted } from 'vue';
 import { helpdeskApi } from '../services/api';
 import type { HelpdeskContract } from '../types';
 
 const question = ref<HelpdeskContract | null>(null);
-const options = ref<string[]>([]);
+const options = ref<string[]>([]); // Stores the 4 shuffled multiple-choice options
 const selectedAnswer = ref('');
 const feedback = ref<{ text: string; isCorrect: boolean } | null>(null);
 const isLoading = ref(false);
 
+/**
+ * MULTIPLE CHOICE LOGIC
+ * To create a fair quiz, we fetch the "correct" answer and "all" answers.
+ * We then pick 3 random unique responses from the "all" list to act as distractors.
+ */
 const loadNextQuestion = async () => {
   isLoading.value = true;
   feedback.value = null;
   selectedAnswer.value = '';
   options.value = [];
   try {
+    // We run both requests in parallel for speed
     const [qRes, allRes] = await Promise.all([
       helpdeskApi.getRandom(),
       helpdeskApi.getAll()
@@ -23,20 +34,21 @@ const loadNextQuestion = async () => {
     question.value = qRes.data;
     
     if (question.value) {
-      // Get all unique responses as distractor pool (excluding the correct one)
+      // 1. Create a pool of "wrong" answers (exclude the correct one)
       const distractorPool = allRes.data
         .map(r => r.response)
         .filter(r => r !== question.value?.response);
       
-      // Remove duplicates from pool
+      // 2. Remove duplicates from the pool using a Set
       const uniquePool = [...new Set(distractorPool)];
       
-      // Shuffle pool and take up to 3 distractors
+      // 3. Pick 3 random distractors from the unique pool
       const distractors = uniquePool
         .sort(() => Math.random() - 0.5)
         .slice(0, 3);
         
-      // Combine with correct answer and shuffle final options
+      // 4. Combine the Correct Answer with the 3 Distractors
+      // 5. Shuffle the final array so the correct answer isn't always first
       options.value = [question.value.response, ...distractors]
         .sort(() => Math.random() - 0.5);
     }
@@ -47,6 +59,7 @@ const loadNextQuestion = async () => {
   }
 };
 
+// Validates if the user's choice matches the database response
 const checkAnswer = () => {
   if (!question.value || !selectedAnswer.value) return;
   
@@ -93,6 +106,7 @@ onMounted(loadNextQuestion);
         <button @click="checkAnswer" :disabled="!selectedAnswer || !!feedback">Submit Answer</button>
       </div>
       
+      <!-- Feedback Message -->
       <div v-if="feedback" :class="['feedback', feedback.isCorrect ? 'correct' : 'incorrect']">
         {{ feedback.text }}
         <div class="actions">

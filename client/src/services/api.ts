@@ -11,7 +11,7 @@ const api = axios.create({
 });
 
 export const helpdeskApi = {
-    getAll: () => api.get<HelpdeskContract[]>('/responses'),
+    getAll: () => api.get<HelpdeskContract[]>('/responses'), //generics
     getOne: (id: string) => api.get<HelpdeskContract>(`/responses/${id}`),
     getRandom: () => api.get<HelpdeskContract>('/responses/random'),
     getCount: () => api.get<{ count: number }>('/responses/count'),

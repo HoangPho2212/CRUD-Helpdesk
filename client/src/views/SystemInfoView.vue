@@ -41,7 +41,7 @@ onMounted(async () => {
       
       <div class="info-card">
         <h3>App Details</h3>
-        <p><strong>Version:</strong> 1.0.0 (Excellent Grade Edition)</p>
+        <p><strong>Version:</strong> 1.0.0 </p>
         <p><strong>Environment:</strong> Development</p>
       </div>
     </div>
