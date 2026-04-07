@@ -54,7 +54,7 @@ const submitForm = async () => {
           <option value="Other">Other</option>
         </select>
       </div>
-      <button type="submit" :disabled="!isCodeValid || !formData.issueCode">Update</button>
+      <button type="submit" :disabled="!isCodeValid || !formData.issueCode">Update</button> 
       <button type="button" @click="$emit('cancel-edit')">Cancel</button>
     </form>
   </div>

@@ -22,7 +22,7 @@ const formData = reactive<HelpdeskContract>({
  * Enforces the format: 3 Uppercase Letters, Hyphen, 3 Digits (e.g., ABC-123)
  */
 const isCodeValid = computed(() => {
-  if (!formData.issueCode) return true; // Don't show error while the user hasn't typed anything
+  if (!formData.issueCode) return true; // Don't show error while the   user hasn't typed anything
   return /^[A-Z]{3}-\d{3}$/.test(formData.issueCode);
 });
 

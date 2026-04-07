@@ -13,7 +13,7 @@ const onResponseAdded = () => {
 };
 
 const onEditResponse = (response: HelpdeskContract) => {
-  currentEdit.value = response;
+  currentEdit.value = response;  //reactive 
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
