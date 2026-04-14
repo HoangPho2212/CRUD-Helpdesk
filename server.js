@@ -30,7 +30,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/helpdeskdb')
 // CORS: Allows our Vue frontend (on port 5173) to communicate with this API
 app.use(cors());
 // Body-Parser: Converts incoming request data into JSON format so we can read it in the controller
-app.use(bodyParser.urlencoded({ extended: true }));x
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Step 4: Route Registration
